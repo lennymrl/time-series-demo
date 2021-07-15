@@ -1,0 +1,7 @@
+default:
+  linear_reg:
+    X_cols: ["day_of_week", "y_lag_1"]
+    y_col: ["y"]
+    test_size: 0.33
+    hparams:
+      positive: true

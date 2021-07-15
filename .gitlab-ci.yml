@@ -1,0 +1,26 @@
+# Stages run sequentially
+stages:
+  - unit-test
+
+# --[ UNIT TEST STAGE ]--
+ci-test:
+  stage: unit-test
+  image: python:3.8.0-slim-buster
+  script:
+    - apt-get update
+    - apt-get install libgomp1
+    - apt-get install --no-install-recommends --yes make="4.2.1-1.2"
+    - pip install --upgrade pip
+    - pip install pipenv
+    - pipenv --python /usr/local/bin/python
+    - pipenv sync --dev
+    - pipenv run make ci-test
+  only:
+    - pushes
+    # code coverage
+  artifacts:
+    paths:
+      - reports/junit.xml
+    reports:
+      junit: reports/junit.xml
+  coverage: '/TOTAL.*\s+(\d+%)$/'
