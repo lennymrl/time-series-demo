@@ -38,23 +38,6 @@ $ pipenv sync
 $ pipenv install package
 ```
 
-## Environment variables
-
-Key | Comment | Default |
---- | --- | --- |
-GCP_KEYFILE_JSON_BASE64 | JSON content of credentials encoded in BASE64 | ``
-
-Create a `config/.secrets.yaml` file containing:
-```yaml
-default:
-  GCP_KEYFILE_JSON_BASE64:
-    ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAiY3BhbGwtYWkt
-    ...
-    ZXJ2aWNlYWNjb3VudC5jb20iCn0=
-```
-
-Request access to the `CPAIORDERING` vault on [Keeper](https://keepersecurity.com/) where project environment variables are stored.
-
 ## Testing
 
 ### Run the code formatter
